@@ -6,7 +6,7 @@ function App() {
 
 	return (
 		<div className="AngaAPP">
-			<h1>AngaApp</h1>
+			<h1 className="underline font-bold">AngaApp</h1>
 		</div>
 	);
 }
