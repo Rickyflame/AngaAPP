@@ -3,7 +3,7 @@ import React from "react";
 export default function Sidebar() {
 	return (
 		<div className="w-1/5 h-full right-0 top-0 bottom-0 ">
-			<div className="days-container text-white h-[70vh] bg-[#302579]">
+			<div className="days-container h-[70vh]">
 				<div className="day h-16">
 					<h2>Sunday</h2>
 				</div>
@@ -26,7 +26,7 @@ export default function Sidebar() {
 					<h2>Saturday</h2>
 				</div>
 			</div>
-			<div className="h-[10rem] mt-4 bg-[#302579]">
+			<div className="h-[10rem] mt-4 sunset-sunrise">
 				<h1>SUNRISE & SUNSET</h1>
 			</div>
 		</div>

@@ -1,10 +1,11 @@
 import React from "react";
+import "../App.css";
 
 export default function Navbar() {
 	return (
 		<div className="navbar">
-			<div className="logo">
-				<h1 className="font-bold text-[38px] text-[#24142c]">AngaAPP</h1>
+			<div className="">
+				<h1 className="logo">AngaAPP</h1>
 			</div>
 			<div className="search-bar">
 				<input
