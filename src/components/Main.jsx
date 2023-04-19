@@ -8,9 +8,11 @@ export default function Main() {
 			<div className="main-element">
 				<div className="flex gap-10">
 					<div className="flex flex-col ml-4">
+						
+						{/*adding the current weather status here 
 						<h1 className=" font-bold text-[100px]">25</h1>
 						<p>15 April 2022</p>
-						<p>Sunny, clear skys</p>
+						<p>Sunny, clear skys</p> */}
 					</div>
 					<div className="flex items-center gap-6 mt-8">
 						<div className="parts-of-day morning">
