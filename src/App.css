@@ -1,11 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
 * {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
 body {
 	overflow: hidden;
-	background: whitesmoke;
+}
+
+h1 {
+	font-size: 6rem;
+}
+
+p {
+	font-size: 1.7rem;
+}
+
+.app {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.4);
+	color: #fff;
+	font-family: "Lato", sans-serif;
+}
+
+.app::before {
+	content: "";
+	background: url("./assets/bg.jpg") no-repeat center center/cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .navbar {
@@ -13,6 +43,11 @@ body {
 	align-items: center;
 	gap: 5rem;
 	margin-top: 1rem;
+}
+
+.logo {
+	font-weight: bold;
+	font-size: 2.5rem;
 }
 
 .search-bar input {
@@ -25,8 +60,13 @@ body {
 	width: 12rem;
 }
 
+.days-container,
+.sunset-sunrise {
+	background-color: rgba(48, 37, 121, 0.7);
+}
+
 .main-element {
-	background: #302579;
+	background-color: rgba(48, 37, 121, 0.5);
 	opacity: 0.9;
 	width: 95%;
 	height: 15rem;
@@ -42,10 +82,26 @@ body {
 	border-radius: 0.75rem;
 }
 
+.morning {
+	background-color: #fdb813;
+}
+
+.midday {
+	background-color: #ffff00;
+}
+
+.evening {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
 .elements {
-	background: #302579;
-	width: 17rem;
+	background-color: rgba(48, 37, 121, 0.6);
+	width: 100%;
 	height: 9rem;
 	border-radius: 1rem;
 	text-align: center;
+}
+
+.graph {
+	background-color: rgba(48, 37, 121, 0.5);
 }
