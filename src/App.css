@@ -52,13 +52,26 @@ p {
 	font-size: 2.5rem;
 }
 
-.search-bar {
-	height: 2rem;
+.search-bar input {
 	width: 30rem;
+	padding: 0.4rem 1.5rem;
+	font-size: 1.2rem;
+	color: #000;
+	border-radius: 25px;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.search-bar input:focus {
+	border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+::placeholder {
+	color: #000;
 }
 
 .location-container {
-	width: 12rem;
+	/* width: 12rem; */
+	font-size: 1.5rem;
 }
 
 /* Sidebar component */
@@ -72,9 +85,35 @@ p {
 	background-color: rgba(48, 37, 121, 0.5);
 	opacity: 0.9;
 	width: 95%;
-	height: 15rem;
+	height: 12rem;
 	margin-top: 1rem;
 	border-radius: 1rem;
+}
+
+.temperature {
+	font-weight: bold;
+	font-size: 80px;
+}
+
+.date {
+	text-transform: capitalize;
+	text-align: center;
+
+	font-size: 18px;
+}
+
+.description {
+	text-transform: capitalize;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.parts-of-day-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1rem auto;
 }
 
 .parts-of-day {
@@ -83,6 +122,8 @@ p {
 	width: 15rem;
 	height: 10rem;
 	border-radius: 0.75rem;
+	font-size: 2rem;
+	color: #000;
 }
 
 .morning {
@@ -95,6 +136,7 @@ p {
 
 .evening {
 	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
 }
 
 .elements {
@@ -103,6 +145,18 @@ p {
 	height: 9rem;
 	border-radius: 1rem;
 	text-align: center;
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-between;
+}
+
+.elements-title {
+	font-size: 30px;
+}
+
+.elements-units {
+	font-size: 35px;
+	padding-top: 1rem;
 }
 
 .graph {
