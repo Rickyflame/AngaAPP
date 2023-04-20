@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ data }) {
 	return (
 		<div className="w-1/5 h-full right-0 top-0 bottom-0 ">
 			<div className="days-container h-[70vh]">
@@ -27,7 +27,7 @@ export default function Sidebar() {
 				</div>
 			</div>
 			<div className="h-[10rem] mt-4 sunset-sunrise">
-				<h1>SUNRISE & SUNSET</h1>
+				<h1></h1>
 			</div>
 		</div>
 	);
