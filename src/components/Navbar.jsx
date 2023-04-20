@@ -26,7 +26,6 @@ export default function Navbar({ setWeatherData }) {
 		}
 	};
 
-	console.log(WEATHER_API_URL);
 	return (
 		<div className="navbar">
 			<div className="">
