@@ -9,15 +9,16 @@
 body {
 	overflow: hidden;
 }
-
+/* 
 h1 {
 	font-size: 6rem;
 }
 
 p {
 	font-size: 1.7rem;
-}
+} */
 
+/* App component */
 .app {
 	width: 100%;
 	height: 100vh;
@@ -38,10 +39,11 @@ p {
 	z-index: -1;
 }
 
+/* Navbar component */
 .navbar {
 	display: flex;
 	align-items: center;
-	gap: 5rem;
+	gap: 3rem;
 	margin-top: 1rem;
 }
 
@@ -51,27 +53,67 @@ p {
 }
 
 .search-bar input {
-	height: 2rem;
-	width: 25rem;
-	border-radius: 0.75rem;
+	width: 30rem;
+	padding: 0.4rem 1.5rem;
+	font-size: 1.2rem;
+	color: #000;
+	border-radius: 25px;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.search-bar input:focus {
+	border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+::placeholder {
+	color: #000;
 }
 
 .location-container {
-	width: 12rem;
+	/* width: 12rem; */
+	font-size: 1.5rem;
 }
 
+/* Sidebar component */
 .days-container,
 .sunset-sunrise {
 	background-color: rgba(48, 37, 121, 0.7);
 }
 
+/* Main component */
 .main-element {
 	background-color: rgba(48, 37, 121, 0.5);
 	opacity: 0.9;
 	width: 95%;
-	height: 15rem;
+	height: 12rem;
 	margin-top: 1rem;
 	border-radius: 1rem;
+}
+
+.temperature {
+	font-weight: bold;
+	font-size: 80px;
+}
+
+.date {
+	text-transform: capitalize;
+	text-align: center;
+
+	font-size: 18px;
+}
+
+.description {
+	text-transform: capitalize;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.parts-of-day-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1rem auto;
 }
 
 .parts-of-day {
@@ -80,6 +122,8 @@ p {
 	width: 15rem;
 	height: 10rem;
 	border-radius: 0.75rem;
+	font-size: 2rem;
+	color: #000;
 }
 
 .morning {
@@ -92,6 +136,7 @@ p {
 
 .evening {
 	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
 }
 
 .elements {
@@ -100,6 +145,18 @@ p {
 	height: 9rem;
 	border-radius: 1rem;
 	text-align: center;
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-between;
+}
+
+.elements-title {
+	font-size: 30px;
+}
+
+.elements-units {
+	font-size: 35px;
+	padding-top: 1rem;
 }
 
 .graph {
