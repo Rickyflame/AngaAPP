@@ -20,6 +20,7 @@ export default function Navbar({ setWeatherData }) {
 			setLocation("");
 		}
 	};
+
 	return (
 		<div className="navbar">
 			<div className="">
@@ -42,6 +43,7 @@ export default function Navbar({ setWeatherData }) {
 				) : (
 					<p>{data.name}</p>
 				)}
+
 			</div>
 		</div>
 	);
