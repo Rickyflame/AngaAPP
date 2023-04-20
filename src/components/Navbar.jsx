@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "../App.css";
-import { WEATHER_API_KEY, WEATHER_API_URL } from "../api";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export default function Navbar({ setWeatherData }) {
 	const [data, setData] = useState({});
 	const [location, setLocation] = useState("");
+
+	const WEATHER_API_URL = import.meta.env.VITE_WEATHER_API_URL;
+	const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 	const url = `${WEATHER_API_URL}/weather?q=${location}&units=metric&appid=${WEATHER_API_KEY}`;
 
@@ -20,6 +25,8 @@ export default function Navbar({ setWeatherData }) {
 			setLocation("");
 		}
 	};
+
+	console.log(WEATHER_API_URL);
 	return (
 		<div className="navbar">
 			<div className="">
