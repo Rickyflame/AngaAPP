@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import CurrentWeather from "./Current-weather";
 
 export default function Main() {
 	return (
@@ -8,7 +9,7 @@ export default function Main() {
 			<div className="main-element">
 				<div className="flex gap-10">
 					<div className="flex flex-col ml-4">
-						
+						<CurrentWeather />
 						{/*adding the current weather status here 
 						<h1 className=" font-bold text-[100px]">25</h1>
 						<p>15 April 2022</p>
@@ -40,7 +41,7 @@ export default function Main() {
 					<p>23</p>
 				</div>
 				<div className="elements">
-					<p>Feels like</p>
+					<p>wind speed</p>
 					<p>23</p>
 				</div>
 				<div className="elements">
