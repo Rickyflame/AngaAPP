@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import * as dotenv from "dotenv";
 
@@ -13,6 +13,7 @@ export default function Navbar({ setWeatherData }) {
 
 	const url = `${WEATHER_API_URL}/weather?q=${location}&units=metric&appid=${WEATHER_API_KEY}`;
 
+	// Search weather of a city
 	const searchLocation = (event) => {
 		if (event.key == "Enter") {
 			fetch(url)
@@ -25,6 +26,32 @@ export default function Navbar({ setWeatherData }) {
 			setLocation("");
 		}
 	};
+
+	useEffect(() => {
+		// Check if browser has geolocation
+		if ("geolocation" in navigator) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const latitude = position.coords.latitude;
+					const longitude = position.coords.longitude;
+					// Use latitude and longitude to fetch weather data
+					fetch(
+						`${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${WEATHER_API_KEY}`
+					)
+						.then((responce) => responce.json())
+						.then((weatherData) => {
+							setWeatherData(weatherData);
+							setData(weatherData);
+						});
+				},
+				(error) => {
+					console.error("Error getting location:", error);
+				}
+			);
+		} else {
+			console.error("Geolocation API is not available in this browser.");
+		}
+	}, []);
 
 	return (
 		<div className="navbar">
