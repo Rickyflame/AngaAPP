@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import MorningSun from "../assets/weather-icons/sun.png";
 import SunClouds from "../assets/weather-icons/sun-cloud.png";
@@ -8,6 +8,24 @@ import WindIcon from "../assets/weather-icons/wind.png";
 
 export default function Main() {
 	const [data, setData] = useState({});
+	const [currentDate, setCurentDate] = useState(new Date());
+
+	useEffect(() => {
+		// Set interval to update current date and time
+		const intervalId = setInterval(() => {
+			setCurentDate(new Date());
+		}, 1000);
+		return () => clearInterval(intervalId);
+	}, []);
+
+	// Format date in "month(in words) day, year" format
+	const options = {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	};
+	const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
 	return (
 		<div className="flex-grow w-4/5 h-full overflow-y-scroll">
 			<Navbar setWeatherData={setData} />
@@ -19,7 +37,7 @@ export default function Main() {
 							<h1 className="temperature">{data.main.temp.toFixed()}°C</h1>
 						) : null}
 
-						<p className="date">20 April 2022</p>
+						<p className="date">{formattedDate}</p>
 						{data.weather ? (
 							<p className="description">{data.weather[0].description}</p>
 						) : null}
