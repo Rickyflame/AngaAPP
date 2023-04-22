@@ -11,7 +11,7 @@ export default function Navbar({ setWeatherData }) {
 	const WEATHER_API_URL = import.meta.env.VITE_WEATHER_API_URL;
 	const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-	const url = `${WEATHER_API_URL}/weather?q=${location}&units=metric&appid=${WEATHER_API_KEY}`;
+	const url = `${WEATHER_API_URL}/current?city=${location}&key=${WEATHER_API_KEY}`;
 
 	// Search weather of a city
 	const searchLocation = (event) => {
@@ -36,7 +36,7 @@ export default function Navbar({ setWeatherData }) {
 					const longitude = position.coords.longitude;
 					// Use latitude and longitude to fetch weather data
 					fetch(
-						`${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${WEATHER_API_KEY}`
+						`${WEATHER_API_URL}/current?lat=${latitude}&lon=${longitude}&key=${WEATHER_API_KEY}`
 					)
 						.then((responce) => responce.json())
 						.then((weatherData) => {
@@ -68,13 +68,11 @@ export default function Navbar({ setWeatherData }) {
 				/>
 			</div>
 			<div className="location-container">
-				{data.sys ? (
+				{data.data ? (
 					<p>
-						{data.name}, {data.sys.country}
+						{data.data[0].city_name}, {data.data[0].country_code}
 					</p>
-				) : (
-					<p>{data.name}</p>
-				)}
+				) : null}
 			</div>
 		</div>
 	);

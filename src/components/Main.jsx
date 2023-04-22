@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import MorningSun from "../assets/weather-icons/sun.png";
+import Sun from "../assets/weather-icons/sun.png";
 import SunClouds from "../assets/weather-icons/sun-cloud.png";
 import EveningIcon from "../assets/weather-icons/evening.png";
-import SunIcon from "../assets/weather-icons/01d.png";
 import WindIcon from "../assets/weather-icons/wind.png";
 
 export default function Main() {
@@ -33,13 +32,20 @@ export default function Main() {
 			<div className="main-element">
 				<div className="flex gap-10">
 					<div className="flex flex-col ml-4">
-						{data.main ? (
-							<h1 className="temperature">{data.main.temp.toFixed()}°C</h1>
+						{data.data ? (
+							<h1 className="temperature">{data.data[0].temp.toFixed()}°C</h1>
 						) : null}
 
 						<p className="date">{formattedDate}</p>
-						{data.weather ? (
-							<p className="description">{data.weather[0].description}</p>
+						{data.data ? (
+							<p className="description">{data.data[0].weather.description}</p>
+						) : null}
+						{data.data ? (
+							<img
+								src={`icons/${data.data[0].weather.icon}.png`}
+								alt="weather"
+								className="weather-icon"
+							/>
 						) : null}
 					</div>
 					<div className="parts-of-day-container">
@@ -48,7 +54,7 @@ export default function Main() {
 							<div className="flex items-center justify-between mx-4">
 								<p className="text-[60px]">20°</p>
 								<img
-									src={MorningSun}
+									src={Sun}
 									alt=""
 									className="parts-of-day-icon"
 								/>
@@ -83,27 +89,25 @@ export default function Main() {
 				<div className="elements">
 					<div className="mx-4 mt-4">
 						<p className="elements-title">Feels like</p>
-						{data.main ? (
+						{data.data ? (
 							<p className="elements-units">
-								{data.main.feels_like.toFixed()}°
+								{data.data[0].app_temp.toFixed()}°C
 							</p>
-						) : (
-							<p className="elements-units">23°</p>
-						)}
+						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
 				<div className="elements">
 					<div className="mx-4 mt-4">
 						<p className="elements-title">Wind</p>
-						{data.wind ? (
-							<p className="elements-units">{data.wind.speed.toFixed()}m/s</p>
-						) : (
-							<p className="elements-units">2 m/s</p>
-						)}
+						{data.data ? (
+							<p className="elements-units">
+								{data.data[0].wind_spd.toFixed()}m/s
+							</p>
+						) : null}
 					</div>
 					<img
 						src={WindIcon}
@@ -114,57 +118,52 @@ export default function Main() {
 				<div className="elements">
 					<div className="mx-4 mt-4">
 						<p className="elements-title">Pressure</p>
-						{data.main ? (
-							<p className="elements-units">{data.main.pressure}hPa</p>
-						) : (
-							<p className="elements-units">1022 hPa</p>
-						)}
+
+						{data.data ? (
+							<p className="elements-units">{data.data[0].pres.toFixed()}mb</p>
+						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
 				<div className="elements">
 					<div className="mx-4 mt-4">
-						<p className="elements-title">Humidity</p>
+						<p className="elements-title">Relative Humidity</p>
 
-						{data.main ? (
-							<p className="elements-units">{data.main.humidity.toFixed()}%</p>
-						) : (
-							<p className="elements-units">45%</p>
-						)}
+						{data.data ? (
+							<p className="elements-units">{data.data[0].rh.toFixed()}%</p>
+						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
 				<div className="elements">
 					<div className="ml-4 mt-4">
-						<p className="elements-title">Min Temp</p>
-						{data.main ? (
-							<p className="elements-units">{data.main.temp_min.toFixed()}°</p>
-						) : (
-							<p className="elements-units">20°</p>
-						)}
+						<p className="elements-title">Wind Direction</p>
+						{data.data ? (
+							<p className="elements-units">{data.data[0].wind_cdir}</p>
+						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
 				<div className="elements">
 					<div className="ml-4 mt-4">
-						<p className="elements-title">Max Temp</p>
-						{data.main ? (
-							<p className="elements-units">{data.main.temp_max.toFixed()}°</p>
+						<p className="elements-title">UV Index</p>
+						{data.data ? (
+							<p className="elements-units">{data.data[0].uv.toFixed()}</p>
 						) : (
 							<p className="elements-units">20°</p>
 						)}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
