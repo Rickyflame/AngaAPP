@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import MorningSun from "../assets/weather-icons/sun.png";
+import Sun from "../assets/weather-icons/sun.png";
 import SunClouds from "../assets/weather-icons/sun-cloud.png";
 import EveningIcon from "../assets/weather-icons/evening.png";
-import SunIcon from "../assets/weather-icons/01d.png";
 import WindIcon from "../assets/weather-icons/wind.png";
 
 export default function Main() {
@@ -41,6 +40,13 @@ export default function Main() {
 						{data.data ? (
 							<p className="description">{data.data[0].weather.description}</p>
 						) : null}
+						{data.data ? (
+							<img
+								src={`icons/${data.data[0].weather.icon}.png`}
+								alt="weather"
+								className="weather-icon"
+							/>
+						) : null}
 					</div>
 					<div className="parts-of-day-container">
 						<div className="parts-of-day morning">
@@ -48,7 +54,7 @@ export default function Main() {
 							<div className="flex items-center justify-between mx-4">
 								<p className="text-[60px]">20°</p>
 								<img
-									src={MorningSun}
+									src={Sun}
 									alt=""
 									className="parts-of-day-icon"
 								/>
@@ -90,7 +96,7 @@ export default function Main() {
 						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
@@ -118,7 +124,7 @@ export default function Main() {
 						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
@@ -131,7 +137,7 @@ export default function Main() {
 						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
@@ -143,7 +149,7 @@ export default function Main() {
 						) : null}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
@@ -157,7 +163,7 @@ export default function Main() {
 						)}
 					</div>
 					<img
-						src={SunIcon}
+						src={Sun}
 						alt=""
 					/>
 				</div>
