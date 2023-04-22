@@ -68,11 +68,11 @@ export default function Navbar({ setWeatherData }) {
 				/>
 			</div>
 			<div className="location-container">
-				{/* {data.data ? (
+				{data.data ? (
 					<p>
 						{data.data[0].city_name}, {data.data[0].country_code}
 					</p>
-				) : null} */}
+				) : null}
 			</div>
 		</div>
 	);
