@@ -33,8 +33,10 @@ body {
 .navbar {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 3rem;
 	margin-top: 1rem;
+	padding: 0 1rem;
 }
 
 .logo {
@@ -43,7 +45,7 @@ body {
 }
 
 .search-bar input {
-	width: 30rem;
+	width: 35rem;
 	padding: 0.4rem 1.5rem;
 	font-size: 1.2rem;
 	color: #000;
@@ -60,8 +62,7 @@ body {
 }
 
 .location-container {
-	/* width: 12rem; */
-	font-size: 1.5rem;
+	font-size: 2.5rem;
 }
 
 /* Sidebar component */
@@ -219,7 +220,7 @@ body {
 
 .sunrise-sunset {
 	background-color: rgba(48, 37, 121, 0.5);
-	margin: 2.5rem 0;
+	margin: 1rem 0;
 	height: 130px;
 	border-radius: 15px;
 }
