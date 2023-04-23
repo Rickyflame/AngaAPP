@@ -9,14 +9,6 @@
 body {
 	overflow: hidden;
 }
-/* 
-h1 {
-	font-size: 6rem;
-}
-
-p {
-	font-size: 1.7rem;
-} */
 
 /* App component */
 .app {
@@ -41,8 +33,10 @@ p {
 .navbar {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 3rem;
 	margin-top: 1rem;
+	padding: 0 1rem;
 }
 
 .logo {
@@ -51,7 +45,7 @@ p {
 }
 
 .search-bar input {
-	width: 30rem;
+	width: 35rem;
 	padding: 0.4rem 1.5rem;
 	font-size: 1.2rem;
 	color: #000;
@@ -68,8 +62,7 @@ p {
 }
 
 .location-container {
-	/* width: 12rem; */
-	font-size: 1.5rem;
+	font-size: 2.5rem;
 }
 
 /* Sidebar component */
@@ -146,21 +139,29 @@ p {
 .elements {
 	background-color: rgba(48, 37, 121, 0.6);
 	width: 100%;
-	height: 9rem;
+	height: 7rem;
 	border-radius: 1rem;
 	text-align: center;
 	display: flex;
-	/* align-items: center; */
+	align-items: center;
 	justify-content: space-between;
+	padding: 10px 40px;
 }
 
+/* .elements-content {
+	margin: 0 auto;
+} */
+
 .elements-title {
-	font-size: 25px;
+	font-size: 20px;
+}
+
+.elements-icon {
+	height: 100px;
 }
 
 .elements-units {
-	font-size: 35px;
-	padding-top: 1rem;
+	font-size: 45px;
 }
 
 .graph {
@@ -171,19 +172,20 @@ p {
 .sidebar {
 	background-color: rgba(48, 37, 121, 0.5);
 	border-radius: 15px;
+	margin-top: 1rem;
 }
 
 .title {
 	font-size: 25px;
 	font-weight: 700;
-	margin: 10px;
+	margin: 15px;
 }
 
 .daily-item {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
 	height: 70px;
-	margin: 5px;
+	margin: 8px;
 	display: flex;
 	align-items: center;
 	cursor: pointer;
@@ -212,4 +214,51 @@ p {
 
 .daily-details-item .daily-details-unit {
 	padding-left: 10px;
+}
+
+/* SunriseSunset component */
+
+.sunrise-sunset {
+	background-color: rgba(48, 37, 121, 0.5);
+	margin: 1rem 0;
+	height: 130px;
+	border-radius: 15px;
+}
+
+.sunrise-sunset-heading {
+	font-size: 20px;
+	margin: 15px 10px 0 10px;
+	font-weight: 700;
+}
+
+.sunrise-sunset-wrapper {
+	margin: 10px 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	height: 80px;
+}
+
+.sunrise-sunset-wrapper-1,
+.sunrise-sunset-wrapper-2 {
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.sunrise-sunset-icon {
+	height: 35px;
+}
+
+.sunrise-sunset-title {
+	padding-left: 5px;
+	font-size: 18px;
+}
+
+.sunrise-sunset-time {
+	padding-left: 2px;
+	font-size: 20px;
+	font-weight: 700;
 }
