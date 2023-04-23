@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-export default function Navbar({ setWeatherData, setForecastData }) {
+function Navbar({ setWeatherData, setForecastData }) {
 	const [currentWeather, setcurrentWeather] = useState({});
 	const [location, setLocation] = useState("");
 
@@ -105,3 +105,5 @@ export default function Navbar({ setWeatherData, setForecastData }) {
 		</div>
 	);
 }
+
+export default Navbar;
