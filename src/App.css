@@ -21,8 +21,7 @@ p {
 /* App component */
 .app {
 	width: 100%;
-	height: 100vh;
-	position: relative;
+	height: 100%;
 	color: #fff;
 	font-family: "Lato", sans-serif;
 }
@@ -156,7 +155,7 @@ p {
 }
 
 .elements-title {
-	font-size: 30px;
+	font-size: 25px;
 }
 
 .elements-units {
@@ -166,4 +165,51 @@ p {
 
 .graph {
 	background-color: rgba(48, 37, 121, 0.5);
+}
+
+/* Sidebar */
+.sidebar {
+	background-color: rgba(48, 37, 121, 0.5);
+	border-radius: 15px;
+}
+
+.title {
+	font-size: 25px;
+	font-weight: 700;
+	margin: 10px;
+}
+
+.daily-item {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	height: 70px;
+	margin: 5px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 5px 10px;
+}
+
+.forecast-icon {
+	width: 50px;
+}
+
+.daily-item .day {
+	cursor: inherit;
+	flex: 1 1;
+	font-weight: 600;
+}
+
+.daily-details {
+	margin: 5px 20px;
+}
+
+.daily-details-item .daily-details-name {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.daily-details-item .daily-details-unit {
+	padding-left: 10px;
 }
