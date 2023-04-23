@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import Sun from "../assets/weather-icons/sun.png";
+import MorningSun from "../assets/weather-icons/sun.png";
 import SunClouds from "../assets/weather-icons/sun-cloud.png";
 import EveningIcon from "../assets/weather-icons/evening.png";
 import WindIcon from "../assets/weather-icons/wind.png";
+import FeelsLike from "../assets/weather-icons/feels-like.png";
+import UVIndex from "../assets/weather-icons/UV-index.png";
+import Humidity from "../assets/weather-icons/humidity.png";
+import Pressure from "../assets/weather-icons/pressure.png";
+import Cloud from "../assets/weather-icons/cloud.png";
+import SunriseSunset from "./SunriseSunset";
 
 function Main() {
 	const [data, setData] = useState({});
@@ -28,7 +34,7 @@ function Main() {
 	const formattedDate = currentDate.toLocaleDateString(undefined, options);
 
 	return (
-		<div className="flex-grow h-full mx-12">
+		<div className="flex-grow h-full mx-8">
 			{/* Navbar */}
 			<Navbar
 				setWeatherData={setData}
@@ -66,8 +72,8 @@ function Main() {
 									<div className="flex items-center justify-between mx-4">
 										<p className="text-[60px]">20°</p>
 										<img
-											src={Sun}
-											alt=""
+											src={MorningSun}
+											alt="weather"
 											className="parts-of-day-icon"
 										/>
 									</div>
@@ -78,7 +84,7 @@ function Main() {
 										<p className="text-[60px]">20°</p>
 										<img
 											src={SunClouds}
-											alt=""
+											alt="weather"
 											className="parts-of-day-icon"
 										/>
 									</div>
@@ -89,7 +95,7 @@ function Main() {
 										<p className="text-[60px]">20°</p>
 										<img
 											src={EveningIcon}
-											alt=""
+											alt="weather"
 											className="parts-of-day-icon"
 										/>
 									</div>
@@ -99,7 +105,7 @@ function Main() {
 					</div>
 					<div className="grid grid-cols-3 gap-10 mt-4 w-[95%]">
 						<div className="elements">
-							<div className="mx-4 mt-4">
+							<div className="elements-content">
 								<p className="elements-title">Feels like</p>
 								{data.data ? (
 									<p className="elements-units">
@@ -108,12 +114,13 @@ function Main() {
 								) : null}
 							</div>
 							<img
-								src={Sun}
-								alt=""
+								src={FeelsLike}
+								alt="weather"
+								className="elements-icon"
 							/>
 						</div>
 						<div className="elements">
-							<div className="mx-4 mt-4">
+							<div className="elements-content">
 								<p className="elements-title">Wind</p>
 								{data.data ? (
 									<p className="elements-units">
@@ -123,12 +130,12 @@ function Main() {
 							</div>
 							<img
 								src={WindIcon}
-								alt=""
-								className="h-[6rem] my-8 mr-8"
+								alt="weather"
+								className="elements-icon"
 							/>
 						</div>
 						<div className="elements">
-							<div className="mx-4 mt-4">
+							<div className="elements-content">
 								<p className="elements-title">Pressure</p>
 
 								{data.data ? (
@@ -138,12 +145,13 @@ function Main() {
 								) : null}
 							</div>
 							<img
-								src={Sun}
-								alt=""
+								src={Pressure}
+								alt="weather"
+								className="elements-icon"
 							/>
 						</div>
 						<div className="elements">
-							<div className="mx-4 mt-4">
+							<div className="elements-content">
 								<p className="elements-title">Humidity</p>
 
 								{data.data ? (
@@ -151,24 +159,26 @@ function Main() {
 								) : null}
 							</div>
 							<img
-								src={Sun}
-								alt=""
+								src={Humidity}
+								alt="weather"
+								className="elements-icon"
 							/>
 						</div>
 						<div className="elements">
-							<div className="ml-4 mt-4">
-								<p className="elements-title">Cloud coverage</p>
+							<div className="elements-content">
+								<p className="elements-title">Cloud Cover</p>
 								{data.data ? (
 									<p className="elements-units">{data.data[0].clouds}%</p>
 								) : null}
 							</div>
 							<img
-								src={Sun}
-								alt=""
+								src={Cloud}
+								alt="weather"
+								className="h-[80px]"
 							/>
 						</div>
 						<div className="elements">
-							<div className="ml-4 mt-4">
+							<div className="elements-content">
 								<p className="elements-title">UV Index</p>
 								{data.data ? (
 									<p className="elements-units">{data.data[0].uv.toFixed()}</p>
@@ -177,18 +187,22 @@ function Main() {
 								)}
 							</div>
 							<img
-								src={Sun}
-								alt=""
+								src={UVIndex}
+								alt="weather"
+								className="elements-icon"
 							/>
 						</div>
 					</div>
-					<div className="w-[95%] h-[15rem] my-10 graph">
+					<div className="w-[95%] h-[15rem] my-4 graph">
 						<p>GRAPH...</p>
 					</div>
 				</div>
 
 				{/* Right side */}
-				<Sidebar forecast={forecast} />
+				<Sidebar
+					forecast={forecast}
+					weatherData={data}
+				/>
 			</div>
 		</div>
 	);
