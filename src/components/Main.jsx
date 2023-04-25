@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import TempGraph from "./TempGraph";
 import MorningSun from "../assets/weather-icons/sun.png";
 import SunClouds from "../assets/weather-icons/sun-cloud.png";
 import EveningIcon from "../assets/weather-icons/evening.png";
@@ -10,7 +11,6 @@ import UVIndex from "../assets/weather-icons/UV-index.png";
 import Humidity from "../assets/weather-icons/humidity.png";
 import Pressure from "../assets/weather-icons/pressure.png";
 import Cloud from "../assets/weather-icons/cloud.png";
-import SunriseSunset from "./SunriseSunset";
 
 function Main() {
 	const [data, setData] = useState({});
@@ -194,7 +194,7 @@ function Main() {
 						</div>
 					</div>
 					<div className="w-[95%] h-[15rem] my-4 graph">
-						<p>GRAPH...</p>
+						<TempGraph forecastData={forecast} />
 					</div>
 				</div>
 
