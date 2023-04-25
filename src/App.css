@@ -172,19 +172,19 @@ body {
 .sidebar {
 	background-color: rgba(48, 37, 121, 0.5);
 	border-radius: 15px;
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 }
 
 .title {
 	font-size: 25px;
 	font-weight: 700;
-	margin: 15px;
+	margin: 5px 5px 0 10px;
 }
 
 .daily-item {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
-	height: 70px;
+	height: 55px;
 	margin: 8px;
 	display: flex;
 	align-items: center;
@@ -220,7 +220,7 @@ body {
 
 .sunrise-sunset {
 	background-color: rgba(48, 37, 121, 0.5);
-	margin: 1rem 0;
+	margin: 5px 0;
 	height: 130px;
 	border-radius: 15px;
 }
