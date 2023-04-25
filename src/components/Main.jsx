@@ -193,9 +193,9 @@ function Main() {
 							/>
 						</div>
 					</div>
-					<div className="w-[95%] h-[15rem] my-4 graph">
-						<TempGraph forecastData={forecast} />
-					</div>
+					{/* <div className=""> */}
+					{/* <TempGraph forecastData={forecast} /> */}
+					{/* </div> */}
 				</div>
 
 				{/* Right side */}
