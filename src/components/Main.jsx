@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import TempGraph from "./TempGraph";
-import MorningSun from "../assets/weather-icons/sun.png";
-import SunClouds from "../assets/weather-icons/sun-cloud.png";
-import EveningIcon from "../assets/weather-icons/evening.png";
 import WindIcon from "../assets/weather-icons/wind.png";
 import FeelsLike from "../assets/weather-icons/feels-like.png";
 import UVIndex from "../assets/weather-icons/UV-index.png";
@@ -16,6 +12,7 @@ function Main() {
 	const [data, setData] = useState({});
 	const [currentDate, setCurentDate] = useState(new Date());
 	const [forecast, setForecast] = useState({});
+	const [hourlyData, setHourlyData] = useState({});
 
 	useEffect(() => {
 		// Set interval to update current date and time
@@ -33,12 +30,42 @@ function Main() {
 	};
 	const formattedDate = currentDate.toLocaleDateString(undefined, options);
 
+	// filter the hourly data for morning, midday, and evening temperatures
+	const morningData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 6 && hour <= 9;
+		});
+	const middayData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 11 && hour <= 14;
+		});
+	const eveningData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 18 && hour <= 21;
+		});
+
+	// calculate the average temperature for morning, midday, and evening
+	const getAverageTemperature = (dataArray) => {
+		const sum = dataArray.reduce((acc, cur) => acc + cur.temp, 0);
+		return (sum / dataArray.length).toFixed(0);
+	};
+	const morningTemperature = getAverageTemperature(morningData);
+	const middayTemperature = getAverageTemperature(middayData);
+	const eveningTemperature = getAverageTemperature(eveningData);
+
 	return (
 		<div className="flex-grow h-full mx-8">
 			{/* Navbar */}
 			<Navbar
 				setWeatherData={setData}
 				setForecastData={setForecast}
+				setHourlyData={setHourlyData}
 			/>
 			<div className="flex">
 				{/* Left side */}
@@ -70,34 +97,63 @@ function Main() {
 								<div className="parts-of-day morning">
 									<p className="mx-4">Morning</p>
 									<div className="flex items-center justify-between mx-4">
-										<p className="text-[60px]">20°</p>
-										<img
-											src={MorningSun}
-											alt="weather"
-											className="parts-of-day-icon"
-										/>
+										<div>
+											<p className="text-[50px]">{morningTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[12].weather.description}
+												</p>
+											) : null}
+										</div>
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[8].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
 									</div>
 								</div>
 								<div className="parts-of-day midday">
 									<p className="mx-4">Midday</p>
+
 									<div className="flex items-center justify-between mx-4">
-										<p className="text-[60px]">20°</p>
-										<img
-											src={SunClouds}
-											alt="weather"
-											className="parts-of-day-icon"
-										/>
+										<div>
+											<p className="text-[50px]">{middayTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[12].weather.description}
+												</p>
+											) : null}
+										</div>
+
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[12].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
 									</div>
 								</div>
 								<div className="parts-of-day evening">
 									<p className="mx-4">Evening</p>
 									<div className="flex items-center justify-between mx-4">
-										<p className="text-[60px]">20°</p>
-										<img
-											src={EveningIcon}
-											alt="weather"
-											className="parts-of-day-icon"
-										/>
+										<div>
+											<p className="text-[50px]">{eveningTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[20].weather.description}
+												</p>
+											) : null}
+										</div>
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[20].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
 									</div>
 								</div>
 							</div>
@@ -193,9 +249,6 @@ function Main() {
 							/>
 						</div>
 					</div>
-					{/* <div className=""> */}
-					{/* <TempGraph forecastData={forecast} /> */}
-					{/* </div> */}
 				</div>
 
 				{/* Right side */}

@@ -40,8 +40,7 @@ body {
 }
 
 .logo {
-	font-weight: bold;
-	font-size: 2.5rem;
+	height: 75px;
 }
 
 .search-bar input {
@@ -66,14 +65,13 @@ body {
 }
 
 /* Sidebar component */
-.days-container,
-.sunset-sunrise {
+.days-container {
 	background-color: rgba(48, 37, 121, 0.7);
 }
 
 /* Main component */
 .main-element {
-	background-color: rgba(48, 37, 121, 0.5);
+	background-color: rgba(48, 37, 121);
 	opacity: 0.9;
 	width: 95%;
 	height: 15rem;
@@ -89,14 +87,14 @@ body {
 .date {
 	text-transform: capitalize;
 	text-align: center;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .description {
 	text-transform: capitalize;
 	text-align: center;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 22px;
 }
 
 .weather-icon {
@@ -121,6 +119,19 @@ body {
 	border-radius: 0.75rem;
 	font-size: 2rem;
 	color: #000;
+	transition: all 0.5s ease;
+}
+
+.parts-of-day:hover {
+	transform: scale(1.1);
+}
+
+.part-of-day-desc {
+	font-size: 18px;
+}
+
+.part-of-day-icon {
+	height: 100px;
 }
 
 .morning {
@@ -128,7 +139,7 @@ body {
 }
 
 .midday {
-	background-color: #ffff00;
+	background-color: rgba(255, 255, 0, 0.7);
 }
 
 .evening {
@@ -137,7 +148,7 @@ body {
 }
 
 .elements {
-	background-color: rgba(48, 37, 121, 0.6);
+	background-color: rgba(48, 37, 121, 0.9);
 	width: 100%;
 	height: 7rem;
 	border-radius: 1rem;
@@ -170,13 +181,14 @@ body {
 
 /* Sidebar */
 .sidebar {
-	background-color: rgba(48, 37, 121, 0.5);
+	background-color: rgba(48, 37, 121, 0.9);
 	border-radius: 15px;
-	/* margin-top: 1rem; */
+	margin-top: 1rem;
+	padding-bottom: 5px;
 }
 
 .title {
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: 700;
 	margin: 5px 5px 0 10px;
 }
@@ -184,13 +196,18 @@ body {
 .daily-item {
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
-	height: 55px;
-	margin: 8px;
+	height: 50px;
+	margin: 7px;
 	display: flex;
 	align-items: center;
 	cursor: pointer;
 	font-size: 16px;
 	padding: 5px 10px;
+	transition: all 0.7s ease;
+}
+
+.daily-item:hover {
+	transform: scale(1.15);
 }
 
 .forecast-icon {
@@ -219,46 +236,41 @@ body {
 /* SunriseSunset component */
 
 .sunrise-sunset {
-	background-color: rgba(48, 37, 121, 0.5);
-	margin: 5px 0;
+	background-color: rgba(48, 37, 121, 0.9);
+	margin: 1rem 0;
 	height: 130px;
 	border-radius: 15px;
 }
 
-.sunrise-sunset-heading {
-	font-size: 20px;
-	margin: 15px 10px 0 10px;
-	font-weight: 700;
-}
-
 .sunrise-sunset-wrapper {
-	margin: 10px 5px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px;
-	height: 80px;
+	height: 130px;
 }
 
 .sunrise-sunset-wrapper-1,
 .sunrise-sunset-wrapper-2 {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
 }
 
 .sunrise-sunset-icon {
-	height: 35px;
+	height: 50px;
 }
 
 .sunrise-sunset-title {
 	padding-left: 5px;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .sunrise-sunset-time {
+	padding-top: 2px;
 	padding-left: 2px;
-	font-size: 20px;
+	font-size: 27px;
 	font-weight: 700;
 }

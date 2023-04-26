@@ -29,7 +29,7 @@ function Sidebar({ forecast, weatherData }) {
 	return (
 		<div className="w-[20%] h-full">
 			<div className="sidebar">
-				<label className="title">Daily Forecast</label>
+				<label className="title">Weekly Forecast</label>
 				<Accordion allowZeroExpanded>
 					{forecast?.data?.slice(0, 7).map((item, index) => (
 						<AccordionItem key={index}>
