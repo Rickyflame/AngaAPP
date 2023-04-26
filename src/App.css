@@ -120,6 +120,11 @@ body {
 	border-radius: 0.75rem;
 	font-size: 2rem;
 	color: #000;
+	transition: all 0.5s ease;
+}
+
+.parts-of-day:hover {
+	transform: scale(1.1);
 }
 
 .part-of-day-desc {
@@ -199,6 +204,11 @@ body {
 	cursor: pointer;
 	font-size: 16px;
 	padding: 5px 10px;
+	transition: all 0.7s ease;
+}
+
+.daily-item:hover {
+	transform: scale(1.15);
 }
 
 .forecast-icon {
