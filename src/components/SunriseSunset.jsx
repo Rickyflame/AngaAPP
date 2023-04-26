@@ -22,13 +22,13 @@ function SunriseSunset({ weatherData }) {
 					) : null}
 				</div>
 				<div className="sunrise-sunset-wrapper-2">
-					<div className="flex items-center">
+					<div className="flex items-center gap-1">
+						<p className="sunrise-sunset-title">Sunset</p>
 						<img
 							src={Sunset}
 							alt="weather"
 							className="sunrise-sunset-icon"
 						/>
-						<p className="sunrise-sunset-title">Sunset</p>
 					</div>
 					{weatherData.data ? (
 						<p className="sunrise-sunset-time">
