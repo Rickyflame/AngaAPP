@@ -1,65 +1,264 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import CurrentWeather from "./Current-weather";
+import Sidebar from "./Sidebar";
+import WindIcon from "../assets/weather-icons/wind.png";
+import FeelsLike from "../assets/weather-icons/feels-like.png";
+import UVIndex from "../assets/weather-icons/UV-index.png";
+import Humidity from "../assets/weather-icons/humidity.png";
+import Pressure from "../assets/weather-icons/pressure.png";
+import Cloud from "../assets/weather-icons/cloud.png";
 
-export default function Main() {
+function Main() {
+	const [data, setData] = useState({});
+	const [currentDate, setCurentDate] = useState(new Date());
+	const [forecast, setForecast] = useState({});
+	const [hourlyData, setHourlyData] = useState({});
+
+	useEffect(() => {
+		// Set interval to update current date and time
+		const intervalId = setInterval(() => {
+			setCurentDate(new Date());
+		}, 1000);
+		return () => clearInterval(intervalId);
+	}, []);
+
+	// Format date in "month(in words) day, year" format
+	const options = {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	};
+	const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
+	// filter the hourly data for morning, midday, and evening temperatures
+	const morningData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 6 && hour <= 9;
+		});
+	const middayData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 11 && hour <= 14;
+		});
+	const eveningData =
+		hourlyData.data ??
+		[].filter((hourData) => {
+			const hour = Number(hourData.timestamp_local.slice(11, 13));
+			return hour >= 18 && hour <= 21;
+		});
+
+	// calculate the average temperature for morning, midday, and evening
+	const getAverageTemperature = (dataArray) => {
+		const sum = dataArray.reduce((acc, cur) => acc + cur.temp, 0);
+		return (sum / dataArray.length).toFixed(0);
+	};
+	const morningTemperature = getAverageTemperature(morningData);
+	const middayTemperature = getAverageTemperature(middayData);
+	const eveningTemperature = getAverageTemperature(eveningData);
+
 	return (
-		<div className="flex-grow w-4/5 h-full overflow-y-scroll">
-			<Navbar />
-			<div className="main-element">
-				<div className="flex gap-10">
-					<div className="flex flex-col ml-4">
-						<CurrentWeather />
-						{/*adding the current weather status here 
-						<h1 className=" font-bold text-[100px]">25</h1>
-						<p>15 April 2022</p>
-						<p>Sunny, clear skys</p> */}
+		<div className="flex-grow h-full mx-8">
+			{/* Navbar */}
+			<Navbar
+				setWeatherData={setData}
+				setForecastData={setForecast}
+				setHourlyData={setHourlyData}
+			/>
+			<div className="flex">
+				{/* Left side */}
+				<div className="w-[80%]">
+					<div className="main-element">
+						<div className="flex gap-10">
+							<div className="flex flex-col ml-4">
+								{data.data ? (
+									<h1 className="temperature">
+										{data.data[0].temp.toFixed()}°C
+									</h1>
+								) : null}
+
+								<p className="date">{formattedDate}</p>
+								{data.data ? (
+									<p className="description">
+										{data.data[0].weather.description}
+									</p>
+								) : null}
+								{data.data ? (
+									<img
+										src={`icons/${data.data[0].weather.icon}.png`}
+										alt="weather"
+										className="weather-icon"
+									/>
+								) : null}
+							</div>
+							<div className="parts-of-day-container">
+								<div className="parts-of-day morning">
+									<p className="mx-4">Morning</p>
+									<div className="flex items-center justify-between mx-4">
+										<div>
+											<p className="text-[50px]">{morningTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[12].weather.description}
+												</p>
+											) : null}
+										</div>
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[8].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
+									</div>
+								</div>
+								<div className="parts-of-day midday">
+									<p className="mx-4">Midday</p>
+
+									<div className="flex items-center justify-between mx-4">
+										<div>
+											<p className="text-[50px]">{middayTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[12].weather.description}
+												</p>
+											) : null}
+										</div>
+
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[12].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
+									</div>
+								</div>
+								<div className="parts-of-day evening">
+									<p className="mx-4">Evening</p>
+									<div className="flex items-center justify-between mx-4">
+										<div>
+											<p className="text-[50px]">{eveningTemperature}°</p>
+											{hourlyData.data ? (
+												<p className="part-of-day-desc">
+													{hourlyData.data[20].weather.description}
+												</p>
+											) : null}
+										</div>
+										{hourlyData.data ? (
+											<img
+												src={`icons/${hourlyData.data[20].weather.icon}.png`}
+												alt="weather"
+												className="part-of-day-icon"
+											/>
+										) : null}
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div className="flex items-center gap-6 mt-8">
-						<div className="parts-of-day morning">
-							<p>Morning</p>
-							<p>20</p>
+					<div className="grid grid-cols-3 gap-10 mt-4 w-[95%]">
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">Feels like</p>
+								{data.data ? (
+									<p className="elements-units">
+										{data.data[0].app_temp.toFixed()}°C
+									</p>
+								) : null}
+							</div>
+							<img
+								src={FeelsLike}
+								alt="weather"
+								className="elements-icon"
+							/>
 						</div>
-						<div className="parts-of-day midday">
-							<p>Midday</p>
-							<p>20</p>
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">Wind</p>
+								{data.data ? (
+									<p className="elements-units">
+										{data.data[0].wind_spd.toFixed()}m/s
+									</p>
+								) : null}
+							</div>
+							<img
+								src={WindIcon}
+								alt="weather"
+								className="elements-icon"
+							/>
 						</div>
-						<div className="parts-of-day evening">
-							<p>Evening</p>
-							<p>20</p>
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">Pressure</p>
+
+								{data.data ? (
+									<p className="elements-units">
+										{data.data[0].pres.toFixed()}mb
+									</p>
+								) : null}
+							</div>
+							<img
+								src={Pressure}
+								alt="weather"
+								className="elements-icon"
+							/>
+						</div>
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">Humidity</p>
+
+								{data.data ? (
+									<p className="elements-units">{data.data[0].rh.toFixed()}%</p>
+								) : null}
+							</div>
+							<img
+								src={Humidity}
+								alt="weather"
+								className="elements-icon"
+							/>
+						</div>
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">Cloud Cover</p>
+								{data.data ? (
+									<p className="elements-units">{data.data[0].clouds}%</p>
+								) : null}
+							</div>
+							<img
+								src={Cloud}
+								alt="weather"
+								className="h-[80px]"
+							/>
+						</div>
+						<div className="elements">
+							<div className="elements-content">
+								<p className="elements-title">UV Index</p>
+								{data.data ? (
+									<p className="elements-units">{data.data[0].uv.toFixed()}</p>
+								) : (
+									<p className="elements-units">20°</p>
+								)}
+							</div>
+							<img
+								src={UVIndex}
+								alt="weather"
+								className="elements-icon"
+							/>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="grid grid-cols-3 gap-10 mt-4 w-[95%]">
-				<div className="elements">
-					<p>Feels like</p>
-					<p>23</p>
-				</div>
-				<div className="elements">
-					<p>Feels like</p>
-					<p>23</p>
-				</div>
-				<div className="elements">
-					<p>wind speed</p>
-					<p>23</p>
-				</div>
-				<div className="elements">
-					<p>Feels like</p>
-					<p>23</p>
-				</div>
-				<div className="elements">
-					<p>Feels like</p>
-					<p>23</p>
-				</div>
-				<div className="elements">
-					<p>Feels like</p>
-					<p>23</p>
-				</div>
-			</div>
-			<div className="w-[95%] h-[15rem] my-10 graph">
-				<p>GRAPH...</p>
+
+				{/* Right side */}
+				<Sidebar
+					forecast={forecast}
+					weatherData={data}
+				/>
 			</div>
 		</div>
 	);
 }
+
+export default Main;
