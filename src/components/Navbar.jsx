@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import * as dotenv from "dotenv";
+import logo from "../assets/logo.png";
 
 dotenv.config();
 
@@ -101,7 +102,11 @@ function Navbar({ setWeatherData, setForecastData, setHourlyData }) {
 	return (
 		<div className="navbar">
 			<div className="">
-				<h1 className="logo">AngaAPP</h1>
+				<img
+					src={logo}
+					alt="logo"
+					className="logo"
+				/>
 			</div>
 			<div className="search-bar">
 				<input
