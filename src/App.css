@@ -34,7 +34,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3rem;
 	margin-top: 1rem;
 	padding: 0 1rem;
 }
@@ -81,7 +80,7 @@ body {
 
 .temperature {
 	font-weight: bold;
-	font-size: 70px;
+	font-size: 60px;
 }
 
 .date {
@@ -98,8 +97,8 @@ body {
 }
 
 .weather-icon {
-	width: 5rem;
-	height: 5rem;
+	width: 100px;
+	height: 90px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -168,15 +167,11 @@ body {
 }
 
 .elements-icon {
-	height: 100px;
+	height: 90%;
 }
 
 .elements-units {
 	font-size: 45px;
-}
-
-.graph {
-	background-color: rgba(48, 37, 121, 0.5);
 }
 
 /* Sidebar */
@@ -267,10 +262,168 @@ body {
 	padding-left: 5px;
 	font-size: 20px;
 }
-
 .sunrise-sunset-time {
 	padding-top: 2px;
 	padding-left: 2px;
 	font-size: 27px;
 	font-weight: 700;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	.navbar {
+		padding: 0;
+		margin-top: 0.5rem;
+	}
+	.logo {
+		height: 20px;
+	}
+	.search-bar input {
+		width: 7rem;
+		padding: 3px 1px;
+		font-size: 0.8rem;
+	}
+	.location-container {
+		font-size: 1rem;
+	}
+	.main-element {
+		width: 100%;
+		height: 15rem;
+	}
+	.temperature {
+		text-align: center;
+		font-size: 30px;
+	}
+
+	.weather-icon {
+		width: 50px;
+		height: 50px;
+		float: right;
+	}
+	.date {
+		font-size: 14px;
+	}
+	.description {
+		font-size: 16px;
+	}
+	.parts-of-day-container {
+		gap: 0.3rem;
+		margin: 1rem 0;
+	}
+	.parts-of-day {
+		width: 5.5rem;
+		height: 8rem;
+		font-size: 1rem;
+	}
+	.parts-of-day:hover {
+		transform: scale(1);
+	}
+	.part-of-day-desc {
+		font-size: 16px;
+	}
+	.part-of-day-icon {
+		height: 50px;
+	}
+	.elements {
+		height: 3.5rem;
+		padding: 1px 3px;
+	}
+	.elements-title {
+		font-size: 13px;
+		margin-left: 8px;
+	}
+
+	.elements-icon {
+		height: 60%;
+		margin-right: 5px;
+	}
+
+	.elements-units {
+		font-size: 16px;
+	}
+
+	.daily-item:hover {
+		transform: scale(1);
+	}
+}
+
+@media screen and (min-width: 481px) and (max-width: 961px) {
+	.navbar {
+		padding: 0;
+		margin-top: 0.5rem;
+	}
+	.logo {
+		height: 40px;
+	}
+	.search-bar input {
+		width: 15rem;
+		font-size: 1rem;
+	}
+	.temperature {
+		text-align: center;
+		font-size: 30px;
+	}
+	.date {
+		font-size: 14px;
+	}
+	.description {
+		font-size: 16px;
+	}
+	.location-container {
+		font-size: 1.5rem;
+	}
+	.weather-icon {
+		width: 40px;
+		height: 40px;
+	}
+	.main-element {
+		height: 10rem;
+	}
+	.parts-of-day {
+		width: 6rem;
+		height: 8rem;
+		font-size: 1rem;
+	}
+	.part-of-day-icon {
+		height: 50px;
+	}
+	.elements {
+		height: 5rem;
+		padding: 5px 3px;
+	}
+	.elements-title {
+		font-size: 16px;
+		margin-left: 5px;
+	}
+
+	.elements-icon {
+		height: 60%;
+		margin-right: 5px;
+	}
+
+	.elements-units {
+		font-size: 19px;
+	}
+	.title {
+		font-size: 16px;
+	}
+	.daily-item {
+		height: 40px;
+		margin: 2px;
+		font-size: 12px;
+	}
+	.sunrise-sunset,
+	.sunrise-sunset-wrapper {
+		height: 80px;
+		margin-top: 10px;
+	}
+	.sunrise-sunset-icon {
+		height: 30px;
+	}
+
+	.sunrise-sunset-title {
+		font-size: 16px;
+	}
+	.sunrise-sunset-time {
+		font-size: 20px;
+	}
 }

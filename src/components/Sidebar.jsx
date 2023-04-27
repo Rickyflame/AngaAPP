@@ -27,7 +27,7 @@ function Sidebar({ forecast, weatherData }) {
 	).concat(DAYS_OF_WEEK.slice(0, dayInAWeek));
 
 	return (
-		<div className="w-[20%] h-full">
+		<div className="w-[100%] md:w-[30%] lg:w-[20%] h-full">
 			<div className="sidebar">
 				<label className="title">Weekly Forecast</label>
 				<Accordion allowZeroExpanded>
