@@ -28,6 +28,7 @@ function Sidebar({ forecast, weatherData }) {
 
 	return (
 		<div className="w-[100%] md:w-[30%] lg:w-[20%] h-full">
+			<SunriseSunset weatherData={weatherData} />
 			<div className="sidebar">
 				<label className="title">Weekly Forecast</label>
 				<Accordion allowZeroExpanded>
@@ -89,7 +90,6 @@ function Sidebar({ forecast, weatherData }) {
 					))}
 				</Accordion>
 			</div>
-			<SunriseSunset weatherData={weatherData} />
 		</div>
 	);
 }
