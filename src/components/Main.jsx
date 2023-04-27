@@ -99,7 +99,7 @@ function Main() {
 							</div>
 							<div className="parts-of-day-container">
 								<div className="parts-of-day morning">
-									<p className="mx-1 lg:mx-4">Morning</p>
+									<p className="mx-1 text-center lg:mx-4 ">Morning</p>
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
 											<p className="text-[30px] lg:text-[50px]">
@@ -121,7 +121,7 @@ function Main() {
 									</div>
 								</div>
 								<div className="parts-of-day midday">
-									<p className="mx-1 lg:mx-4">Midday</p>
+									<p className="mx-1 text-center lg:mx-4">Midday</p>
 
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
@@ -145,7 +145,7 @@ function Main() {
 									</div>
 								</div>
 								<div className="parts-of-day evening">
-									<p className="mx-1 lg:mx-4">Evening</p>
+									<p className="mx-1 text-center lg:mx-4">Evening</p>
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
 											<p className="text-[30px] lg:text-[50px]">
@@ -169,7 +169,7 @@ function Main() {
 							</div>
 						</div>
 					</div>
-					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4 md:w-[95%] lg:gap-10 mt-4 w-[100%] lg:w-[95%]">
+					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4 md:w-[95%] lg:gap-10 mt-4 w-[100%] lg:w-[95%] lg:pt-6">
 						<div className="elements">
 							<div className="elements-content">
 								<p className="elements-title">Feels like</p>
