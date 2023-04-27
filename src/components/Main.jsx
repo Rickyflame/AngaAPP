@@ -72,37 +72,37 @@ function Main() {
 				<div className="w-[100%] md:w-[80%] lg:w-[80%] ">
 					<div className="main-element">
 						<div className="flex flex-col md:flex  md:flex-row lg:flex lg:flex-row lg:gap-10">
-							<div className="flex flex-col md:mt-4 md:flex-col lg:flex-col ml-4">
+							<div className="flex flex-row items-center gap-4 md:gap-0 lg:gap-0 md:mt-4 md:flex-col lg:flex-col ml-4">
 								{data.data ? (
 									<h1 className="temperature">
 										{data.data[0].temp.toFixed()}°C
 									</h1>
 								) : null}
-								<div className="flex flex-row items-center md:flex-col lg:flex lg:flex-col">
-									<div>
-										<p className="date">{formattedDate}</p>
-										{data.data ? (
-											<p className="description">
-												{data.data[0].weather.description}
-											</p>
-										) : null}
-									</div>
-
+								{/* <div className="flex flex-row items-center md:flex-col lg:flex lg:flex-col"> */}
+								<div>
+									<p className="date">{formattedDate}</p>
 									{data.data ? (
-										<img
-											src={`icons/${data.data[0].weather.icon}.png`}
-											alt="weather"
-											className="weather-icon"
-										/>
+										<p className="description">
+											{data.data[0].weather.description}
+										</p>
 									) : null}
 								</div>
+
+								{data.data ? (
+									<img
+										src={`icons/${data.data[0].weather.icon}.png`}
+										alt="weather"
+										className="weather-icon"
+									/>
+								) : null}
+								{/* </div> */}
 							</div>
 							<div className="parts-of-day-container">
 								<div className="parts-of-day morning">
 									<p className="mx-1 text-center lg:mx-4 ">Morning</p>
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
-											<p className="text-[30px] lg:text-[50px]">
+											<p className="text-[30px] lg:text-[60px]">
 												{morningTemperature}°
 											</p>
 											{hourlyData.data ? (
@@ -125,7 +125,7 @@ function Main() {
 
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
-											<p className="text-[30px] lg:text-[50px]">
+											<p className="text-[30px] lg:text-[60px]">
 												{middayTemperature}°
 											</p>
 											{hourlyData.data ? (
@@ -148,7 +148,7 @@ function Main() {
 									<p className="mx-1 text-center lg:mx-4">Evening</p>
 									<div className="flex items-center justify-between mx-1 lg:mx-4">
 										<div>
-											<p className="text-[30px] lg:text-[50px]">
+											<p className="text-[30px] lg:text-[60px]">
 												{eveningTemperature}°
 											</p>
 											{hourlyData.data ? (
