@@ -81,7 +81,7 @@ body {
 
 .temperature {
 	font-weight: bold;
-	font-size: 70px;
+	font-size: 60px;
 }
 
 .date {
@@ -98,8 +98,8 @@ body {
 }
 
 .weather-icon {
-	width: 5rem;
-	height: 5rem;
+	width: 100px;
+	height: 100px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -168,7 +168,7 @@ body {
 }
 
 .elements-icon {
-	height: 100px;
+	height: 90%;
 }
 
 .elements-units {

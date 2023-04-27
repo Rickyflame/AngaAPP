@@ -230,7 +230,7 @@ function Main() {
 							<img
 								src={Cloud}
 								alt="weather"
-								className="h-[80px]"
+								className="h-[80%]"
 							/>
 						</div>
 						<div className="elements">
