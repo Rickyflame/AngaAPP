@@ -73,7 +73,7 @@ body {
 	background-color: rgba(48, 37, 121);
 	opacity: 0.9;
 	width: 95%;
-	height: 15rem;
+	height: 16rem;
 	margin-top: 1rem;
 	border-radius: 1rem;
 }
@@ -126,7 +126,7 @@ body {
 }
 
 .part-of-day-desc {
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .part-of-day-icon {
